@@ -1,0 +1,32 @@
+# 服务端监听配置
+service:
+  mode: debug|release|test
+  port: :13000
+  tcp_port: :13001
+  max_page_size: 100
+
+# log配置
+log:
+  path: /../config/log.xml
+
+
+# 数据库配置
+db:
+  dialect: mysql
+  host: localhost:3306
+  user: root
+  pass: 123456
+  db: wallet
+  max_open_connections: 20
+  max_idle_connections: 10
+  enable_log: false
+
+# redis
+rdis:
+  host: 127.0.0.1:6379
+  pass:
+  db: 4
+
+# wss
+wss:
+  heart_beat_time: 5

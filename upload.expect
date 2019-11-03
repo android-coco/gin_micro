@@ -1,0 +1,21 @@
+#! /usr/bin/expect
+set timeout 20
+set project [lindex $argv 0]
+set username [lindex $argv 1]
+set host [lindex $argv 2]
+set password [lindex $argv 3]  
+set project_path [lindex $argv 4] 
+
+spawn scp -P 22022 $project $username@$host:$project_path
+expect {
+	"No such file or directory" {
+		exit 2
+	}
+	timeout {
+		send_user "lost connection\n"
+		exit 127
+	}
+	"(yes/no)?" {send "yes\r"; exp_continue}
+	"*password:" { send "$password\n" }
+}
+interact

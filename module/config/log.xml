@@ -1,0 +1,22 @@
+<seelog type="adaptive"  mininterval="2000000" maxinterval="100000000" critmsgcount="500" minlevel="debug">
+    <exceptions>
+        <exception filepattern="test*" minlevel="error"/>
+    </exceptions>
+    <outputs formatid="all">
+        <filter levels="debug">
+            <rollingfile type="date" fullname="true" filename="../logs/debug.log" datepattern="02.01.2006"  maxrolls="7" archivetype="zip"/>
+        </filter>
+        <filter levels="info">
+            <rollingfile type="date" fullname="true" filename="../logs/access.log" datepattern="02.01.2006"  maxrolls="7" archivetype="zip"/>
+        </filter>
+        <filter levels="error">
+            <rollingfile type="date" fullname="true" filename="../logs/error.log" datepattern="02.01.2006" maxrolls="7" archivetype="zip" />
+        </filter>
+        <filter levels="critical">
+            <rollingfile type="date" fullname="true" filename="../logs/critical.log" datepattern="02.01.2006" maxrolls="7" archivetype="zip"/>
+        </filter>
+    </outputs>
+    <formats>
+        <format id="all" format="[%Level] [%Time] [%File.%Line] %Msg%n"/>
+    </formats>
+</seelog>

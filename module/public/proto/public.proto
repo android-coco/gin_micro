@@ -1,0 +1,26 @@
+syntax="proto3";
+
+package proto;
+
+service public {
+    // 获取服务器列表
+    rpc GetHost(ReqHost) returns (RespHost) {}
+}
+
+message ReqHost {
+    string appVersion = 1;
+    string appName = 2;
+}
+
+message Host {
+    int32 id = 1;
+    string hostName = 2;
+    string ip =3;
+    string port =4;
+}
+
+message RespHost {
+    int32 code = 1;
+    string message =2;
+    repeated Host host = 3;
+}
