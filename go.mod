@@ -24,5 +24,6 @@ require (
 
 replace (
 	github.com/gogo/protobuf => github.com/gogo/protobuf v1.3.1
-	github.com/micro/go-plugins v1.4.0 => github.com/micro/go-plugins v1.4.0
+	github.com/micro/go-micro v1.14.0 => github.com/micro/go-micro v1.13.2
+	github.com/micro/go-plugins v1.4.0 => github.com/micro/go-plugins v1.3.0
 )

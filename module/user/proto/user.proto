@@ -2,25 +2,24 @@ syntax="proto3";
 
 package proto;
 
-service public {
+service user {
     // 获取服务器列表
-    rpc GetHost(ReqHost) returns (RespHost) {}
+    rpc Host(ReqClientHost) returns (RespClientHost) {}
 }
 
-message ReqHost {
+message ReqClientHost {
     string appVersion = 1;
     string appName = 2;
 }
-
-message Host {
+message ClientHost {
     int32 id = 1;
     string hostName = 2;
     string ip =3;
     string port =4;
 }
 
-message RespHost {
+message RespClientHost {
     int32 code = 1;
     string message =2;
-    repeated Host host = 3;
+    repeated ClientHost host = 3;
 }

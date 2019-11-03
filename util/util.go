@@ -6,6 +6,8 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
+	"github.com/micro/go-micro/broker"
+	"log"
 	"math"
 	"math/rand"
 	"os"
@@ -129,4 +131,35 @@ func IsCheckCmd(cmd []byte,uid int32) bool {
 		return false
 	}
 	return true
+}
+// push消息到队列
+func Pub(b broker.Broker,topic string) {
+	tick := time.NewTicker(time.Second)
+	i := 0
+	for _ = range tick.C {
+		msg := &broker.Message{
+			Header: map[string]string{
+				"id": fmt.Sprintf("%d", i),
+			},
+			Body: []byte(fmt.Sprintf("%d: %s", i, time.Now().String())),
+		}
+		if err := b.Publish(topic, msg); err != nil {
+			log.Printf("[pub] failed: %v", err)
+		} else {
+			fmt.Println("[pub] pubbed message:", string(msg.Body))
+		}
+		i++
+	}
+}
+
+// 订阅信息
+func Sub(b broker.Broker,topic string) {
+	_, err := b.Subscribe(topic, func(p broker.Event) error {
+
+		fmt.Println("[sub] received message:", string(p.Message().Body), "header", p.Message().Header, "topic", p.Topic())
+		return nil
+	})
+	if err != nil {
+		fmt.Println(err)
+	}
 }

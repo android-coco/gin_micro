@@ -10,14 +10,14 @@ import (
 
 // DB 数据库配置
 type Db struct {
-	EnableLog          bool   `yaml:"enable_log" json:"enable_log"`
-	Dialect            string `yaml:"dialect" json:"dialect"`
-	Host               string `yaml:"host" json:"host"`
-	User               string `yaml:"user" json:"user"`
+	EnableLog          bool   `yaml:"enable_log"`
+	Dialect            string `yaml:"dialect"`
+	Host               string `yaml:"host"`
+	User               string `yaml:"user"`
 	PassWd             string `yaml:"pass" json:"pass"`
-	Db                 string `yaml:"db" json:"db"`
-	MaxOpenConnections int    `yaml:"max_open_connections" json:"max_open_connections"`
-	MaxIdleConnections int    `yaml:"max_idle_connections" json:"max_idle_connections"`
+	Db                 string `yaml:"db"`
+	MaxOpenConnections int    `yaml:"max_open_connections"`
+	MaxIdleConnections int    `yaml:"max_idle_connections"`
 }
 
 // Service 服务端配置
@@ -25,17 +25,17 @@ type Service struct {
 	Mode        string `yaml:"mode"`
 	Port        string `yaml:"port"`
 	TCPPort     string `yaml:"tcp_port"`
+	EtcdUrl     string `yaml:"etcd_url"`
 	ServiceUrl  string `yaml:"service_url"`
 	RpcUrl      string `yaml:"rpc_url"`
 	MaxPageSize int    `yaml:"max_page_size"`
 }
 
-
 // redis
 type Redis struct {
-	Host   string `yaml:"host"`
-	PassWd string `yaml:"pass"`
-	Db     int    `yaml:"db"`
+	Host   string `yaml:"host" json:"host"`
+	PassWd string `yaml:"pass" json:"pass_wd"`
+	Db     int    `yaml:"db" json:"db"`
 }
 
 type LogConfig struct {

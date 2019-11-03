@@ -3,8 +3,9 @@ package apigw
 import (
 	"context"
 	"gin_micro/module"
-	publicProto "gin_micro/module/public/proto"
 	"gin_micro/module/selector"
+	userProto "gin_micro/module/user/proto"
+	"gin_micro/util"
 	"github.com/gin-gonic/gin"
 	"github.com/micro/go-micro/client"
 	"github.com/micro/go-micro/config/cmd"
@@ -25,12 +26,12 @@ func GetHostHandler(c *gin.Context) {
 	appVersion := c.Request.FormValue("app_version")
 	appName := c.Request.FormValue("app_name")
 	// Create new request to service go.micro.srv.example, method Example.Call
-	req := client.NewRequest("qp_web_server.service.public", "Public.GetHost", &publicProto.ReqHost{
+	req := client.NewRequest(util.GinMicroUser, "User.Host", &userProto.ReqClientHost{
 		AppName:    appName,
 		AppVersion: appVersion,
 	})
 
-	resp := &publicProto.RespHost{}
+	resp := &userProto.RespClientHost{}
 
 	// Call service
 	err := client.Call(context.TODO(), req, resp)

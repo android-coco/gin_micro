@@ -23,7 +23,7 @@ func (dbs *DbService) GetHost(ctx context.Context, req *proto.ReqHost, res *prot
 	var respHosts []*proto.Host
 
 	for _, host := range hosts {
-		respHosts = append(respHosts, &proto.Host{Id: host.Id, HostName: host.Name, Ip: host.Ip, Port: host.Prot})
+		respHosts = append(respHosts, &proto.Host{Id: host.Id, HostName: host.Name, Ip: host.Ip, Port: host.Port})
 	}
 
 	res.Code = util.SuccessCode

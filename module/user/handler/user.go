@@ -2,13 +2,16 @@ package handler
 
 import (
 	"context"
+	"encoding/json"
+	"gin_micro/module/cache/redis"
 	dbProto "gin_micro/module/db/proto"
-	"gin_micro/module/public/proto"
+	"gin_micro/module/user/proto"
 	"gin_micro/util"
 	"github.com/micro/go-micro"
+	"time"
 )
 
-type Public struct{}
+type User struct{}
 
 var (
 	dbCli dbProto.DbService
@@ -21,11 +24,11 @@ func init() {
 	service.Init()
 	cli := service.Client()
 	// 初始化一个account服务的客户端
-	dbCli = dbProto.NewDbService("qp_web_server.service.db", cli)
+	dbCli = dbProto.NewDbService(util.GinMicroBb, cli)
 }
 
 // GetHost : 获取服务器列表
-func (u *Public) GetHost(ctx context.Context, req *proto.ReqHost, res *proto.RespHost) error {
+func (u *User) Host(ctx context.Context, req *proto.ReqClientHost, res *proto.RespClientHost) error {
 
 	appVersion := req.AppVersion
 	appName := req.AppName
@@ -44,15 +47,15 @@ func (u *Public) GetHost(ctx context.Context, req *proto.ReqHost, res *proto.Res
 		res.Message = respHost.Message
 		return nil
 	}
-	var data []*proto.Host
+	var data []*proto.ClientHost
 	for _, host := range respHost.Host {
-		data = append(data, &proto.Host{Id: host.Id,
+		data = append(data, &proto.ClientHost{Id: host.Id,
 			HostName: host.HostName,
 			Ip:       host.Ip,
 			Port:     host.Port})
 	}
-	//data = append(data, &proto.Host{Id: 1, HostName: "webGw", Ip: "192.168.1.5", Port: "13000"})
-	//data = append(data, &proto.Host{Id: 2, HostName: "webGw", Ip: "192.168.1.5", Port: "13000"})
+	bytes, _ := json.Marshal(data)
+	redis.GetRedisDb().Set("host",string(bytes),10 * time.Minute)
 	res.Code = 0
 	res.Message = "获取成功"
 	res.Host = data

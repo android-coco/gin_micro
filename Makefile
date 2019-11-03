@@ -5,14 +5,14 @@
 GW_SRC_PROTO=cmd/main.go
 # db 模块
 DB_SRC_PROTO=module/db/main.go
-# public 模块
-PUBLIC_SRC_PROTO=module/public/main.go
+# user 模块
+PUBLIC_SRC_PROTO=module/user/main.go
 
 
 # db模块 输出
 DB_OUTPUT=module/bin/server_db
-# 公共微服务
-PUBLIC_OUTPUT=module/bin/server_public
+# user微服务
+PUBLIC_OUTPUT=module/bin/server_user
 # 网关输出
 GW_OUTPUT=bin/gin_micro
 

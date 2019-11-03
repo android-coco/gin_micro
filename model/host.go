@@ -6,7 +6,7 @@ type QpHost struct {
 	Id   int32  `json:"id"`
 	Name string `json:"name"`
 	Ip   string `json:"ip"`
-	Prot string `json:"prot"`
+	Port string `json:"port"`
 }
 
 func (QpHost) TableName() string {

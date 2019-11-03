@@ -2,7 +2,7 @@ package db
 
 import (
 	"fmt"
-	"gin_micro/config"
+	"gin_micro/module/config"
 	"gin_micro/util"
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -29,9 +29,9 @@ func InitDB(configDb config.Db) (*gorm.DB, error) {
 	db.LogMode(configDb.EnableLog)
 	db.SetLogger(dbLogger{})
 	//用于设置最大打开的连接数，默认值为0表示不限制。
-	db.DB().SetMaxOpenConns(2000)
+	db.DB().SetMaxOpenConns(configDb.MaxOpenConnections)
 	//用于设置闲置的连接数。
-	db.DB().SetMaxIdleConns(1000)
+	db.DB().SetMaxIdleConns(configDb.MaxIdleConnections)
 
 	return db, nil
 }
