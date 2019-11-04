@@ -25,7 +25,6 @@ type Service struct {
 	Mode        string `yaml:"mode"`
 	Port        string `yaml:"port"`
 	TCPPort     string `yaml:"tcp_port"`
-	EtcdUrl     string `yaml:"etcd_url"`
 	ServiceUrl  string `yaml:"service_url"`
 	RpcUrl      string `yaml:"rpc_url"`
 	MaxPageSize int    `yaml:"max_page_size"`

@@ -1,9 +1,8 @@
 # 服务端监听配置
 service:
   mode: debug|release|test
-  port: :13000
-  etcd_url: localhost:2379
-  tcp_port: :13001
+  port: :14000
+  tcp_port: :14001
   max_page_size: 100
 
 # log配置

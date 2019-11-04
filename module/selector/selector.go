@@ -1,6 +1,7 @@
 package selector
 
 import (
+	"fmt"
 	"github.com/micro/go-micro/client/selector"
 	"github.com/micro/go-micro/registry"
 	"math/rand"
@@ -60,6 +61,7 @@ func (n *firstNodeSelector) Select(service string, opts ...selector.SelectOption
 		Address:  services[0].Nodes[0].Address,
 		Metadata: services[0].Nodes[0].Metadata,
 	}
+	fmt.Println(newNode)
 	return func() (*registry.Node, error) {
 		return newNode, nil
 	}, nil

@@ -32,7 +32,7 @@ func main() {
 		micro.Name(util.GinMicroUser),
 		micro.Registry(eTCDRegistry),
 		micro.Metadata(map[string]string{
-			"type": "helloworld",
+			"type": "helloWorld",
 		}),
 		micro.Broker(newBroker),
 		micro.Version("latest"),

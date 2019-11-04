@@ -1,7 +1,15 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 10:56:49
+ * @LastEditTime: 2019-11-04 16:06:40
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /gin_micro/cmd/main.go
+ */
 package main
 
 import (
-	"gin_micro/cache"
+	redis "gin_micro/cache"
 	"gin_micro/config"
 	"gin_micro/db"
 	"gin_micro/httpserver"

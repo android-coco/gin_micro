@@ -1,3 +1,11 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 10:57:45
+ * @LastEditTime: 2019-11-04 15:56:54
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /gin_micro/db/db.go
+ */
 package db
 
 import (
