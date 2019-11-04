@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:03:09
+ * @LastEditTime: 2019-11-04 18:09:25
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/routes.go
+ * @https://github.com/android-coco/gin_micro
+ */
 package httpserver
 
 import (
@@ -6,6 +15,7 @@ import (
 	"gin_micro/httpserver/user"
 	"gin_micro/httpserver/wss"
 	"gin_micro/module/apigw"
+
 	"github.com/gin-gonic/gin"
 )
 
@@ -20,8 +30,7 @@ func initRoutes(router *gin.Engine) {
 	{
 		//活动
 		v1.POST("/registered", user.Registered)
+		//获取服务器列表
+		v1.POST("/public/host", apigw.GetHostHandler)
 	}
-
-	//获取服务器列表
-	router.POST("v1/public/host", apigw.GetHostHandler)
 }

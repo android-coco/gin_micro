@@ -1,14 +1,23 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 13:40:01
+ * @LastEditTime: 2019-11-04 18:04:29
+ * @LastEditors: yhlyl
+ * @Description: In User Settings Edit
+ * @FilePath: /gin_micro/config/config.go
+ */
 package config
 
 import (
-	yaml2 "gopkg.in/yaml.v2"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
+
+	yaml2 "gopkg.in/yaml.v2"
 )
 
-// DB 数据库配置
+// Db 数据库配置
 type Db struct {
 	EnableLog          bool   `yaml:"enable_log"`
 	Dialect            string `yaml:"dialect"`
@@ -25,22 +34,24 @@ type Service struct {
 	Mode        string `yaml:"mode"`
 	Port        string `yaml:"port"`
 	TCPPort     string `yaml:"tcp_port"`
-	ServiceUrl  string `yaml:"service_url"`
-	RpcUrl      string `yaml:"rpc_url"`
+	ServiceURL  string `yaml:"service_url"`
+	RPCURL      string `yaml:"rpc_url"`
 	MaxPageSize int    `yaml:"max_page_size"`
 }
 
-// redis
+// Redis redis配置
 type Redis struct {
 	Host   string `yaml:"host" json:"host"`
 	PassWd string `yaml:"pass" json:"pass_wd"`
 	Db     int    `yaml:"db" json:"db"`
 }
 
+// LogConfig log配置
 type LogConfig struct {
 	Path string `yaml:"path"`
 }
 
+// WssConfig websocket配置
 type WssConfig struct {
 	HeartbeatTime int64 `yaml:"heart_beat_time"`
 }
