@@ -1,8 +1,18 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:03:09
+ * @LastEditTime: 2019-11-04 21:21:02
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/httpserver.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package httpserver
 
 import (
 	"gin_micro/config"
 	"gin_micro/httpserver/servermiddleware"
+
 	"github.com/gin-gonic/gin"
 )
 

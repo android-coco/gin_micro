@@ -1,7 +1,17 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 00:30:50
+ * @LastEditTime: 2019-11-04 21:22:13
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/module/cache/redis/redis.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package redis
 
 import (
 	"gin_micro/module/config"
+
 	"github.com/go-redis/redis"
 )
 

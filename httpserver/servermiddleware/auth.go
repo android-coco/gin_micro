@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:00:22
+ * @LastEditTime: 2019-11-04 21:18:04
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/servermiddleware/auth.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package servermiddleware
 
 import (
@@ -7,9 +16,10 @@ import (
 	"gin_micro/module"
 	"gin_micro/util"
 	"gin_micro/util/jwt"
-	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type BaseAuthReq struct {

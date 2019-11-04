@@ -1,14 +1,24 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-10-22 11:33:37
+ * @LastEditTime: 2019-11-04 21:28:07
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/jwt/jwt.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package jwt
 
 import (
 	"crypto/rsa"
 	"errors"
-	"github.com/dgrijalva/jwt-go"
 	"io/ioutil"
 	"log"
 	"os"
 	"path/filepath"
 	"time"
+
+	"github.com/dgrijalva/jwt-go"
 )
 
 // EasyToken is an Struct to encapsulate username and expires as parameter

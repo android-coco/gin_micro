@@ -1,11 +1,21 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:05:07
+ * @LastEditTime: 2019-11-04 21:20:54
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/wss/home.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package wss
 
 import (
 	"gin_micro/model"
 	"gin_micro/module"
 	"gin_micro/util"
-	"github.com/gin-gonic/gin"
 	"net/http"
+
+	"github.com/gin-gonic/gin"
 )
 
 type clientListData struct {

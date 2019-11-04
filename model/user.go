@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:06:12
+ * @LastEditTime: 2019-11-04 21:21:47
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/model/user.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package model
 
 import "gin_micro/db"

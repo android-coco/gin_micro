@@ -1,15 +1,25 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:04:40
+ * @LastEditTime: 2019-11-04 21:20:38
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/wss/test/client.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package main
 
 import (
 	"encoding/json"
 	"gin_micro/httpserver/wss/proto"
 	"gin_micro/util"
-	protoutil "github.com/gogo/protobuf/proto"
-	"github.com/gorilla/websocket"
 	"log"
 	"os"
 	"os/signal"
 	"time"
+
+	protoutil "github.com/gogo/protobuf/proto"
+	"github.com/gorilla/websocket"
 )
 
 var url = "ws://127.0.0.1:13000/v1/wss"

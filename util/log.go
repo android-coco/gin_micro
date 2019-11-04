@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-10-28 15:56:12
+ * @LastEditTime: 2019-11-04 21:28:22
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/log.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package util
 
 import (

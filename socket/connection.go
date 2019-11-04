@@ -1,12 +1,22 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:12:02
+ * @LastEditTime: 2019-11-04 21:27:11
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/socket/connection.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package socket
 
 import (
 	"errors"
 	"gin_micro/util"
-	"github.com/gorilla/websocket"
 	"net/http"
 	"sync"
 	"time"
+
+	"github.com/gorilla/websocket"
 )
 
 // 写超时时间

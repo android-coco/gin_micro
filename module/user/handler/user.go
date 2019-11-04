@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 01:00:16
+ * @LastEditTime: 2019-11-04 21:26:56
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/module/user/handler/user.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package handler
 
 import (
@@ -7,8 +16,9 @@ import (
 	dbProto "gin_micro/module/db/proto"
 	"gin_micro/module/user/proto"
 	"gin_micro/util"
-	"github.com/micro/go-micro"
 	"time"
+
+	"github.com/micro/go-micro"
 )
 
 type User struct{}
@@ -43,7 +53,7 @@ func (u *User) Host(ctx context.Context, req *proto.ReqClientHost, res *proto.Re
 		return err
 	}
 	if respHost.Code != 0 {
-		res.Code = util.ErrorSqlCode
+		res.Code = util.ErrorSQLCode
 		res.Message = respHost.Message
 		return nil
 	}
@@ -55,7 +65,7 @@ func (u *User) Host(ctx context.Context, req *proto.ReqClientHost, res *proto.Re
 			Port:     host.Port})
 	}
 	bytes, _ := json.Marshal(data)
-	redis.GetRedisDb().Set("host",string(bytes),10 * time.Minute)
+	redis.GetRedisDb().Set("host", string(bytes), 10*time.Minute)
 	res.Code = 0
 	res.Message = "获取成功"
 	res.Host = data

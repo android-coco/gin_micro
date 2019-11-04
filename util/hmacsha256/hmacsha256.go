@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-10-18 17:23:01
+ * @LastEditTime: 2019-11-04 21:32:28
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/hmacsha256/hmacsha256.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package hmacsha256
 
 import (

@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:12:23
+ * @LastEditTime: 2019-11-04 21:27:17
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/socket/tcp/connection.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package socket
 
 import (

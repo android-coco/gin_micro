@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:04:06
+ * @LastEditTime: 2019-11-04 21:21:14
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/model/client.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package model
 
 import (

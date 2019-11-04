@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 13:42:54
+ * @LastEditTime: 2019-11-04 21:27:00
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/module/user/main.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package main
 
 import (
@@ -5,6 +14,8 @@ import (
 	userHandler "gin_micro/module/user/handler"
 	"gin_micro/module/user/proto"
 	"gin_micro/util"
+	"log"
+
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/broker"
 	"github.com/micro/go-micro/registry"
@@ -12,7 +23,6 @@ import (
 	"github.com/micro/go-plugins/broker/rabbitmq"
 	_ "github.com/micro/go-plugins/broker/rabbitmq"
 	_ "github.com/micro/go-plugins/transport/rabbitmq"
-	"log"
 )
 
 func main() {

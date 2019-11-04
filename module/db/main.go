@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 00:34:10
+ * @LastEditTime: 2019-11-04 21:26:26
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/module/db/main.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package main
 
 import (
@@ -6,6 +15,8 @@ import (
 	"gin_micro/module/db/handler"
 	"gin_micro/module/db/proto"
 	"gin_micro/util"
+	"log"
+
 	"github.com/micro/go-micro"
 	"github.com/micro/go-micro/broker"
 	"github.com/micro/go-micro/registry"
@@ -13,7 +24,6 @@ import (
 	"github.com/micro/go-plugins/broker/rabbitmq"
 	_ "github.com/micro/go-plugins/broker/rabbitmq"
 	_ "github.com/micro/go-plugins/transport/rabbitmq"
-	"log"
 )
 
 func main() {
@@ -53,7 +63,7 @@ func main() {
 		log.Fatalf("微服务注册失败:%v", err)
 	}
 	//订阅消息
-	go util.Sub(newBroker,util.UserQueue)
+	go util.Sub(newBroker, util.UserQueue)
 	if err := service.Run(); err != nil {
 		log.Fatalf("微服务启动失败:%v", err)
 	}

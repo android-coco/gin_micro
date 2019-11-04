@@ -1,9 +1,19 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 23:35:16
+ * @LastEditTime: 2019-11-04 21:11:33
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/public.go
+ * @https://github.com/android-coco/gin_micro
+ */
 package util
 
+// const 常量
 const (
 	SuccessCode    = 0
 	ErrorLackCode  = 1
-	ErrorSqlCode   = 2
+	ErrorSQLCode   = 2
 	ErrorRidesCode = 3
 
 	//参数签名秘钥

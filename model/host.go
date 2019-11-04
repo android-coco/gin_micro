@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 12:21:08
+ * @LastEditTime: 2019-11-04 21:21:39
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/model/host.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package model
 
 import "github.com/jinzhu/gorm"

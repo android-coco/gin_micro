@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:12:44
+ * @LastEditTime: 2019-11-04 21:27:27
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/tcp/tcp.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package tcp
 
 import (
@@ -6,12 +15,13 @@ import (
 	"gin_micro/config"
 	"gin_micro/httpserver/wss/proto"
 	"gin_micro/model"
-	"gin_micro/socket/tcp"
+	socket "gin_micro/socket/tcp"
 	"gin_micro/util"
 	"gin_micro/util/uuid"
-	protoutil "github.com/gogo/protobuf/proto"
 	"log"
 	"time"
+
+	protoutil "github.com/gogo/protobuf/proto"
 )
 
 func Run(address string) {

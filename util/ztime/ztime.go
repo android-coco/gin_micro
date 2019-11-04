@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-07-08 23:19:27
+ * @LastEditTime: 2019-11-04 21:27:46
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/ztime/ztime.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package ztime
 
 // Package now is a time toolkit for golang.

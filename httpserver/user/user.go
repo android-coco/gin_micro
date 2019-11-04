@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:02:14
+ * @LastEditTime: 2019-11-04 21:14:30
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/user/user.go
+ * @https://github.com/android-coco/gin_micro
+ */
 package user
 
 import (
@@ -5,12 +14,13 @@ import (
 	"gin_micro/httpserver/servermiddleware"
 	"gin_micro/module"
 	"gin_micro/util"
-	"github.com/gin-gonic/gin"
 	"net/http"
 	"strings"
+
+	"github.com/gin-gonic/gin"
 )
 
-//代理id,账号,手机号码,密码,ip,设备类型,机器序列号
+// RegisteredReq 代理id,账号,手机号码,密码,ip,设备类型,机器序列号
 type RegisteredReq struct {
 	servermiddleware.BaseReq
 	Account  string `form:"account" json:"account" binding:"required"`
@@ -19,6 +29,7 @@ type RegisteredReq struct {
 	AgentID  int    `form:"agent_id" json:"agent_id"`
 }
 
+//RegisteredRsp RegisteredRsp
 type RegisteredRsp struct {
 	UserID      int64   `json:"user_id"`      //uid
 	UserGold    float64 `json:"user_gold"`    //金币
@@ -27,7 +38,7 @@ type RegisteredRsp struct {
 	MemberOrder int64   `json:"member_order"` //等级
 }
 
-//注册
+//Registered 注册
 func Registered(c *gin.Context) {
 	var resReq RegisteredReq
 
@@ -56,7 +67,7 @@ func Registered(c *gin.Context) {
 	).Rows()
 	if err != nil {
 		util.Logger.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
-		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSqlCode, ErrorMsg: err.Error()})
+		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSQLCode, ErrorMsg: err.Error()})
 		return
 	}
 	var errorCode int64
@@ -65,7 +76,7 @@ func Registered(c *gin.Context) {
 	err = rows.Scan(&errorCode, &errorMsg)
 	if err != nil {
 		util.Logger.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
-		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSqlCode, ErrorMsg: err.Error()})
+		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSQLCode, ErrorMsg: err.Error()})
 		return
 	}
 	if errorCode != util.SuccessCode {
@@ -89,9 +100,8 @@ func Registered(c *gin.Context) {
 		&rsq.MemberOrder)
 	if err != nil {
 		util.Logger.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
-		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSqlCode, ErrorMsg: err.Error()})
+		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSQLCode, ErrorMsg: err.Error()})
 		return
 	}
 	c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.SuccessCode, Data: rsq})
 }
-

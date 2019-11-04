@@ -1,13 +1,23 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 00:57:07
+ * @LastEditTime: 2019-11-04 21:26:15
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/module/config/config.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package config
 
 import (
 	"fmt"
 	"gin_micro/util"
+	"log"
+
 	"github.com/micro/go-micro/config"
 	"github.com/micro/go-micro/config/encoder/json"
 	"github.com/micro/go-micro/config/source"
 	"github.com/micro/go-micro/config/source/etcd"
-	"log"
 )
 
 const (
@@ -51,7 +61,6 @@ func init() {
 		for {
 			//观测目录的变化。当文件有改动时，新值便可生效。监听配置文件版本变化
 			w, err := conf.Watch(Version)
-			fmt.Println("======init config ======",w, err)
 			if err != nil {
 				// do something
 				log.Fatalf("微服务配置watch失败:%v", err)
@@ -90,9 +99,9 @@ var configSrv Config
 
 // Config 配置
 type Config struct {
-	DB     Db        `json:"db"`
-	Redis  Redis     `json:"redis"`
-	Public Public    `json:"public"`
+	DB     Db     `json:"db"`
+	Redis  Redis  `json:"redis"`
+	Public Public `json:"public"`
 }
 
 // 公共配置
@@ -119,7 +128,6 @@ type Redis struct {
 	Db     int    `json:"db"`
 }
 
-
 func GetDb() Db {
 	return configSrv.DB
 }
@@ -131,4 +139,3 @@ func GetRedis() Redis {
 func GetPublic() Public {
 	return configSrv.Public
 }
-

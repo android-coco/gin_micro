@@ -1,3 +1,12 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-10-15 11:55:09
+ * @LastEditTime: 2019-11-04 21:27:37
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/code.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package util
 
 const (

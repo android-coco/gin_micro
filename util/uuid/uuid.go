@@ -1,6 +1,15 @@
 /*
  * @Author: yhlyl
  * @Date: 2019-07-08 23:19:27
+ * @LastEditTime: 2019-11-04 21:28:03
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/util/uuid/uuid.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
+/*
+ * @Author: yhlyl
+ * @Date: 2019-07-08 23:19:27
  * @LastEditTime: 2019-11-04 16:56:30
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit

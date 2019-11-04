@@ -1,11 +1,21 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-04 13:45:58
+ * @LastEditTime: 2019-11-04 21:26:37
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/module/selector/selector.go
+ * @Github: https://github.com/android-coco/gin_micro
+ */
 package selector
 
 import (
 	"fmt"
-	"github.com/micro/go-micro/client/selector"
-	"github.com/micro/go-micro/registry"
 	"math/rand"
 	"time"
+
+	"github.com/micro/go-micro/client/selector"
+	"github.com/micro/go-micro/registry"
 )
 
 func init() {
