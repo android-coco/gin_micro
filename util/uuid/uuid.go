@@ -1,3 +1,11 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-07-08 23:19:27
+ * @LastEditTime: 2019-11-04 16:56:30
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /gin_micro/util/uuid/uuid.go
+ */
 package uuid
 
 import (
@@ -77,6 +85,7 @@ func (id UUID) HexToUpper() string {
 	return strings.ToUpper(hex.EncodeToString(m[:])[8:24])
 }
 
+// Hex32
 func (id UUID) Hex32() string {
 	m := md5.Sum([]byte(id))
 	return hex.EncodeToString(m[:])

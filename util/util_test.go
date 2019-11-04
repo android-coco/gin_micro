@@ -1,8 +1,15 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-02 17:10:25
+ * @LastEditTime: 2019-11-04 16:55:47
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: /gin_micro/util/util_test.go
+ */
 package util
 
 import (
 	"encoding/base64"
-	"fmt"
 	"testing"
 )
 
@@ -36,5 +43,5 @@ func TestMD5(t *testing.T) {
     "agent_id": 10
 }`
 	xx := VerifySign(base64.StdEncoding.EncodeToString([]byte(json)), DesKey)
-	fmt.Println(xx)
+	t.Log(xx)
 }

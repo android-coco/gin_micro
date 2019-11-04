@@ -6,7 +6,6 @@ import (
 	"encoding/binary"
 	"encoding/hex"
 	"fmt"
-	"github.com/micro/go-micro/broker"
 	"log"
 	"math"
 	"math/rand"
@@ -15,21 +14,25 @@ import (
 	"strconv"
 	"strings"
 	"time"
+
+	"github.com/micro/go-micro/broker"
 )
 
-//随机数种子
+//Rnd 随机数种子
 var Rnd = rand.New(rand.NewSource(time.Now().UnixNano()))
 
+//VerifySign 验证token
 func VerifySign(body, key string) string {
 	return strings.ToLower(MD5(strings.ToLower(MD5(body)) + key))
 }
 
-//md5加密
+//MD5 md5加密
 func MD5(data string) string {
 	m := md5.Sum([]byte(data))
 	return hex.EncodeToString(m[:])
 }
 
+// MD5Encrypt16 x
 func MD5Encrypt16(data string) string {
 	m := md5.Sum([]byte(data))
 	return hex.EncodeToString(m[:])[8:24]
@@ -39,13 +42,13 @@ func GetAbsPath(relativePath string) (string, error) {
 	return filepath.Abs(filepath.Dir(os.Args[0]) + relativePath)
 }
 
-// 获取数字随机字符
+// GetRandDigit 获取数字随机字符
 func GetRandDigit(n int) string {
 	return fmt.Sprintf("%0"+strconv.Itoa(n)+"d", Rnd.Intn(int(math.Pow10(n))))
 }
 
 // 创建命令 数据
-func CreateCmd(cmd byte, context []byte,uid int32) []byte {
+func CreateCmd(cmd byte, context []byte, uid int32) []byte {
 	msg := make([]byte, 0)
 	// 包头
 	msg = append(msg, 0x7f)
@@ -84,15 +87,14 @@ func IntToBytes(n interface{}) ([]byte, error) {
 }
 
 //字节转换成整形
-func BytesToInt(n interface{},b []byte) error {
+func BytesToInt(n interface{}, b []byte) error {
 	bytesBuffer := bytes.NewBuffer(b)
 	err := binary.Read(bytesBuffer, binary.BigEndian, n)
 	return err
 }
 
-
 //校验包合法性 true 不合法
-func IsCheckCmd(cmd []byte,uid int32) bool {
+func IsCheckCmd(cmd []byte, uid int32) bool {
 
 	len := len(cmd)
 	//最小包长度
@@ -105,19 +107,17 @@ func IsCheckCmd(cmd []byte,uid int32) bool {
 	}
 	// uid
 	var cmdUid int32
-	err := BytesToInt(&cmdUid,cmd[4:10])
+	err := BytesToInt(&cmdUid, cmd[4:10])
 	if uid != cmdUid || err != nil {
 		return false
 	}
 
 	//包长度
 	var cmdLen int16
-	err = BytesToInt(&cmdLen,cmd[2:4])
+	err = BytesToInt(&cmdLen, cmd[2:4])
 	if len != int(cmdLen) || err != nil {
 		return false
 	}
-
-
 
 	//校验和
 	var check int
@@ -132,8 +132,9 @@ func IsCheckCmd(cmd []byte,uid int32) bool {
 	}
 	return true
 }
+
 // push消息到队列
-func Pub(b broker.Broker,topic string) {
+func Pub(b broker.Broker, topic string) {
 	tick := time.NewTicker(time.Second)
 	i := 0
 	for _ = range tick.C {
@@ -153,7 +154,7 @@ func Pub(b broker.Broker,topic string) {
 }
 
 // 订阅信息
-func Sub(b broker.Broker,topic string) {
+func Sub(b broker.Broker, topic string) {
 	_, err := b.Subscribe(topic, func(p broker.Event) error {
 
 		fmt.Println("[sub] received message:", string(p.Message().Body), "header", p.Message().Header, "topic", p.Topic())
