@@ -1,7 +1,7 @@
 /*
  * @Author: yhlyl
  * @Date: 2019-11-04 13:40:01
- * @LastEditTime: 2019-11-04 18:04:29
+ * @LastEditTime: 2019-11-05 14:20:23
  * @LastEditors: yhlyl
  * @Description: In User Settings Edit
  * @FilePath: /gin_micro/config/config.go
@@ -97,5 +97,4 @@ func InitConfig(path string) {
 	if err != nil {
 		log.Printf("Unmarshal: %v", err)
 	}
-
 }
