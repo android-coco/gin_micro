@@ -1,7 +1,7 @@
 /*
  * @Author: yhlyl
  * @Date: 2019-11-03 11:13:38
- * @LastEditTime: 2019-11-04 21:27:22
+ * @LastEditTime: 2019-11-06 13:40:06
  * @LastEditors: yhlyl
  * @Description:
  * @FilePath: /gin_micro/tcp/test/client.go
@@ -23,7 +23,7 @@ import (
 )
 
 const (
-	addr = "127.0.0.1:13001"
+	addr = "127.0.0.1:14001"
 )
 
 func main() {

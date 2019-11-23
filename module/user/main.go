@@ -1,7 +1,7 @@
 /*
  * @Author: yhlyl
  * @Date: 2019-11-04 13:42:54
- * @LastEditTime: 2019-11-04 21:27:00
+ * @LastEditTime: 2019-11-06 17:18:08
  * @LastEditors: yhlyl
  * @Description:
  * @FilePath: /gin_micro/module/user/main.go

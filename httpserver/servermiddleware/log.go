@@ -1,8 +1,17 @@
+/*
+ * @Author: yhlyl
+ * @Date: 2019-11-03 11:01:19
+ * @LastEditTime: 2019-11-06 15:11:17
+ * @LastEditors: yhlyl
+ * @Description:
+ * @FilePath: /gin_micro/httpserver/servermiddleware/log.go
+ * @https://github.com/android-coco
+ */
 package servermiddleware
 
 import (
 	"bytes"
-	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"github.com/gin-gonic/gin"
 	"io/ioutil"
 	"net/http"
@@ -53,7 +62,7 @@ func BaseLogger() gin.HandlerFunc {
 			req = []byte(c.GetString("req"))
 		}
 		if statusCode == http.StatusInternalServerError {
-			util.Logger.Errorf("[GIN MICRO] |%3d|%s|%4s|%s|%s|%s|Req:%s|Resp:%s",
+			jasonlog.Errorf("[GIN MICRO] |%3d|%s|%4s|%s|%s|%s|Req:%s|Resp:%s",
 				statusCode,
 				latency,
 				clientIP,
@@ -61,11 +70,10 @@ func BaseLogger() gin.HandlerFunc {
 				path,
 				comment,
 				string(req),
-				string(blw.body.Bytes(),
-				),
+				string(blw.body.Bytes()),
 			)
 		} else {
-			util.Logger.Infof("[GIN MICRO] |%3d|%s|%4s|%s|%s|%s|Req:%s|Resp:%s",
+			jasonlog.Infof("[GIN MICRO] |%3d|%s|%4s|%s|%s|%s|Req:%s|Resp:%s",
 				statusCode,
 				latency,
 				clientIP,

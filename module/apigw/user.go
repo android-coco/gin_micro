@@ -16,6 +16,7 @@ import (
 	"gin_micro/module/selector"
 	userProto "gin_micro/module/user/proto"
 	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"log"
 	"net/http"
 
@@ -37,7 +38,7 @@ func GetHostHandler(c *gin.Context) {
 	var baseReq servermiddleware.BaseReq
 	err := c.ShouldBindJSON(&baseReq)
 	if err != nil {
-		util.Logger.Errorf("GetHostHandler 接口  参数绑定 出错 err: %s ", err.Error())
+		jasonlog.Errorf("GetHostHandler 接口  参数绑定 出错 err: %s ", err.Error())
 		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorLackCode, ErrorMsg: err.Error()})
 		return
 	}

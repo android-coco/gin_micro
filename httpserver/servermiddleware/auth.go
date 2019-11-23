@@ -16,6 +16,7 @@ import (
 	"gin_micro/module"
 	"gin_micro/util"
 	"gin_micro/util/jwt"
+	jasonlog "gin_micro/util/log"
 	"io/ioutil"
 	"net/http"
 
@@ -37,7 +38,7 @@ func BaseAuth() gin.HandlerFunc {
 
 		req, err := c.GetRawData()
 		if err != nil {
-			util.Logger.Errorf("BaseAuth  参数绑定 出错 err: %s ", err.Error())
+			jasonlog.Errorf("BaseAuth  参数绑定 出错 err: %s ", err.Error())
 			c.AbortWithStatusJSON(http.StatusOK, module.ApiResp{ErrorNo: 8, ErrorMsg: err.Error()})
 			return
 		}
@@ -47,7 +48,7 @@ func BaseAuth() gin.HandlerFunc {
 		err = json.Unmarshal(req, &authReq)
 
 		if err != nil {
-			util.Logger.Errorf("BaseAuth  参数绑定 出错 err: %s ", err.Error())
+			jasonlog.Errorf("BaseAuth  参数绑定 出错 err: %s ", err.Error())
 			c.AbortWithStatusJSON(http.StatusOK, module.ApiResp{ErrorNo: 8, ErrorMsg: err.Error()})
 			return
 		}

@@ -12,6 +12,7 @@ package socket
 import (
 	"errors"
 	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"log"
 	"net"
 	"strings"
@@ -49,7 +50,7 @@ func InitConn(address string, connFunc func(conn *Connection)) error {
 				if strings.Contains(err.Error(), "use of closed network connection") {
 					break
 				}
-				util.Logger.Errorf("tcp accept err:%v", err)
+				jasonlog.Errorf("tcp accept err:%v", err)
 				continue
 			}
 			var conn *Connection
@@ -151,11 +152,11 @@ func (conn *Connection) writeLoop() {
 		case data := <-conn.outChan:
 			//写超时时间
 			if err := conn.tcpConn.SetWriteDeadline(time.Now().Add(writeWait)); err != nil {
-				util.Logger.Errorf("write err:%v", err)
+				jasonlog.Errorf("write err:%v", err)
 				goto ERROR
 			}
 			if _, err := conn.tcpConn.Write(data.Data); err != nil {
-				util.Logger.Errorf("write err:%v", err)
+				jasonlog.Errorf("write err:%v", err)
 				goto ERROR
 			}
 		}

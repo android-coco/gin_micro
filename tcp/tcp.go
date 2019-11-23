@@ -17,6 +17,7 @@ import (
 	"gin_micro/model"
 	socket "gin_micro/socket/tcp"
 	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"gin_micro/util/uuid"
 	"log"
 	"time"
@@ -66,12 +67,12 @@ func readMsg(currentClient *model.TCPClient) {
 		//fmt.Println(len(data),string(data), err)
 		if err != nil {
 			// 连接错误
-			util.Logger.Errorf("读取错误：err:%v", err)
+			jasonlog.Errorf("读取错误：err:%v", err)
 			return
 		}
 		cmd := util.IsCheckCmd(data, currentClient.Uid)
 		if !cmd {
-			util.Logger.Errorf("数据包错误：err:%v", err)
+			jasonlog.Errorf("数据包错误：err:%v", err)
 			//TODO  返回错误到客户端
 			return
 		}
@@ -82,7 +83,7 @@ func readMsg(currentClient *model.TCPClient) {
 		log.Print("服务端recvMsg:\n", msg, string(msg.Data))
 		err = currentClient.Conn.WriteMessage(0x01, dataCallBack, currentClient.Uid)
 		if err != nil {
-			util.Logger.Errorf("回复错误：%v", err)
+			jasonlog.Errorf("回复错误：%v", err)
 			// 回复错误
 			break
 		}

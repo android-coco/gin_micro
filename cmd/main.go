@@ -1,8 +1,8 @@
 /*
  * @Author: yhlyl
  * @Date: 2019-11-03 10:56:49
- * @LastEditTime: 2019-11-04 16:22:25
- * @LastEditors: Please set LastEditors
+ * @LastEditTime: 2019-11-06 15:33:38
+ * @LastEditors: yhlyl
  * @Description: In User Settings Edit
  * @FilePath: /gin_micro/cmd/main.go
  */
@@ -19,7 +19,11 @@ import (
 
 func main() {
 	config.InitConfig("/../config/config.yml")
-	redis.InitRedis(config.GetRedis())
+	err := redis.InitRedis(config.GetRedis())
+	if err != nil {
+		log.Fatalf("redis init err %v", err)
+		return
+	}
 	initDB, err := db.InitDB(config.GetDb())
 	if err != nil {
 		log.Fatalf("db init err %v", err)

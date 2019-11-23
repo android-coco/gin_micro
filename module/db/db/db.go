@@ -12,7 +12,7 @@ package db
 import (
 	"fmt"
 	"gin_micro/module/config"
-	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/mysql"
@@ -24,7 +24,7 @@ type dbLogger struct {
 }
 
 func (logger dbLogger) Print(values ...interface{}) {
-	util.Logger.Info(values)
+	jasonlog.Info(values)
 }
 
 // Connect 初始化 DB连接

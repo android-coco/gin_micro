@@ -14,6 +14,7 @@ import (
 	"gin_micro/httpserver/servermiddleware"
 	"gin_micro/module"
 	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"net/http"
 	"strings"
 
@@ -45,7 +46,7 @@ func Registered(c *gin.Context) {
 	err := c.ShouldBindJSON(&resReq)
 
 	if err != nil {
-		util.Logger.Errorf("Registered 接口  参数绑定 出错 err: %s ", err.Error())
+		jasonlog.Errorf("Registered 接口  参数绑定 出错 err: %s ", err.Error())
 		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorLackCode, ErrorMsg: err.Error()})
 		return
 	}
@@ -66,7 +67,7 @@ func Registered(c *gin.Context) {
 		strings.Split(c.Request.RemoteAddr, ":")[0],
 	).Rows()
 	if err != nil {
-		util.Logger.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
+		jasonlog.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
 		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSQLCode, ErrorMsg: err.Error()})
 		return
 	}
@@ -75,7 +76,7 @@ func Registered(c *gin.Context) {
 	rows.Next()
 	err = rows.Scan(&errorCode, &errorMsg)
 	if err != nil {
-		util.Logger.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
+		jasonlog.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
 		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSQLCode, ErrorMsg: err.Error()})
 		return
 	}
@@ -99,7 +100,7 @@ func Registered(c *gin.Context) {
 		&rsq.PhoneNumber,
 		&rsq.MemberOrder)
 	if err != nil {
-		util.Logger.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
+		jasonlog.Errorf("Registered 接口  查询存储过程 err: %s ", err.Error())
 		c.JSON(http.StatusOK, module.ApiResp{ErrorNo: util.ErrorSQLCode, ErrorMsg: err.Error()})
 		return
 	}

@@ -12,6 +12,7 @@ package socket
 import (
 	"errors"
 	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"net/http"
 	"sync"
 	"time"
@@ -171,7 +172,7 @@ func (conn *Connection) writeLoop() {
 			//写超时时间
 			conn.wsConn.SetWriteDeadline(time.Now().Add(writeWait))
 			if err := conn.wsConn.WriteMessage(data.MessageType, data.Data); err != nil {
-				util.Logger.Errorf("写失败：err:%v", err)
+				jasonlog.Errorf("写失败：err:%v", err)
 				goto ERROR
 			}
 		case <-conn.closeChan:

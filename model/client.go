@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"gin_micro/socket"
 	tcp "gin_micro/socket/tcp"
-	"gin_micro/util"
+	jasonlog "gin_micro/util/log"
 	"sync"
 	"time"
 )
@@ -43,7 +43,7 @@ func (c *Client) ReleaseClient() {
 	c.Conn.Close()
 	c.OfflineTime = time.Now().Format("2006-01-02T15:04:05.000")
 	ClientList.Store(c.Token, c)
-	util.Logger.Errorf("客户端token:%s,客户端ip:%s Bay Bay ", c.Token, c.Ip)
+	jasonlog.Errorf("客户端token:%s,客户端ip:%s Bay Bay ", c.Token, c.Ip)
 }
 
 //客户端信息
@@ -68,5 +68,5 @@ func (c *TCPClient) ReleaseClient() {
 	c.Conn.Close()
 	c.OfflineTime = time.Now().Format("2006-01-02T15:04:05.000")
 	ClientList.Store(c.Id, c)
-	util.Logger.Errorf("客户端Id:%s,客户端ip:%s Bay Bay ", c.Id, c.Ip)
+	jasonlog.Errorf("客户端Id:%s,客户端ip:%s Bay Bay ", c.Id, c.Ip)
 }

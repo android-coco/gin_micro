@@ -8,6 +8,7 @@ import (
 	"gin_micro/socket"
 	"gin_micro/util"
 	"gin_micro/util/jwt"
+	jasonlog "gin_micro/util/log"
 	"github.com/gin-gonic/gin"
 	protoutil "github.com/gogo/protobuf/proto"
 	"log"
@@ -28,9 +29,9 @@ func Wss(c *gin.Context) {
 	if uid == "" {
 		uid = c.GetHeader("uid")
 	}
-	util.Logger.Infof("[QP WEB SERVER] ws parameter. token is: %s", token)
+	jasonlog.Infof("[QP WEB SERVER] ws parameter. token is: %s", token)
 	if err != nil {
-		util.Logger.Error("[QP WEB SERVER] upgrade:", err)
+		jasonlog.Error("[QP WEB SERVER] upgrade:", err)
 		return
 	}
 	if token == "" || uid == "" {
@@ -110,12 +111,12 @@ func readMsg(currentClient *model.Client) {
 		//fmt.Println(len(data),string(data), err)
 		if err != nil {
 			// 连接错误
-			util.Logger.Errorf("读取错误：err:%v", err)
+			jasonlog.Errorf("读取错误：err:%v", err)
 			break
 		}
 		cmd := util.IsCheckCmd(data, currentClient.Uid)
 		if !cmd {
-			util.Logger.Errorf("数据包错误：err:%v", err)
+			jasonlog.Errorf("数据包错误：err:%v", err)
 			//TODO  返回错误到客户端
 			return
 		}
@@ -126,7 +127,7 @@ func readMsg(currentClient *model.Client) {
 		log.Print("服务端recvMsg:\n", msg, string(msg.Data))
 		err = currentClient.Conn.WriteMessage(0x01, dataCallBack, currentClient.Uid)
 		if err != nil {
-			util.Logger.Errorf("回复错误：%v", err)
+			jasonlog.Errorf("回复错误：%v", err)
 			// 回复错误
 			break
 		}
